@@ -1,0 +1,91 @@
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body">
+						<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+							<mat-tab label="Caisses">
+								<table class="table">
+									<thead>
+										<tr>
+											<th class="text-center">#</th>
+											<th>Nom</th>
+											<th>Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let Caisse of Caisses">
+											<td class="text-center">{{Caisse.caisseId}}</td>
+											<td>{{Caisse.nomCaisse}}</td>
+											<td>{{Caisse.descriptionCaisse}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</mat-tab>
+							<mat-tab label="Chercher une Caisse">
+									<form (submit)="onSubmit()">
+										<div class="card-content">
+											<div class="form-group col-md-6">
+												<label class="control-label">Caisse Identifiant
+													<span class="star">*</span>
+												</label>
+												<input class="form-control" name="id" type="number" [(ngModel)]="id" required="true"/>
+											</div>
+											<div class="category form-category">
+												<span class="star">*</span> Required fields</div>
+											<div class="text-center">
+												<button type="submit" class="btn btn-fill btn-wd" style="background-color: red;">Chercher</button>
+											</div>
+										</div>
+									</form>
+									<table class="table" *ngIf="Caisse">
+										<thead>
+											<tr>
+												<th class="text-center">#</th>
+												<th>Nom</th>
+												<th>Description</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="text-center">{{Caisse.caisseId}}</td>
+												<td>{{Caisse.nomCaisse}}</td>
+												<td>{{Caisse.descriptionCaisse}}</td>
+											</tr>
+										</tbody>
+									</table>
+							</mat-tab>
+							<mat-tab label="Ajouter Une Caisse">
+								<form [formGroup]="CaisseForm" (ngSubmit)="onAdd(CaisseForm.value)">
+									<div class="card-content">
+										<div class="row">
+											<div class="form-group col-md-6">
+												<label class="control-label">Nom
+													<span class="star">*</span>
+												</label>
+												<input class="form-control" name="nom" id="nom" type="text" formControlName="nomCaisse" required="true"/>
+											</div>
+											<div class="form-group col-md-6">
+												<label class="control-label">description
+													<span class="star">*</span>
+												</label>
+												<input class="form-control" name="description" type="text" formControlName="descriptionCaisse" id="description" required="true"/>
+											</div>
+										</div>
+										<div class="category form-category">
+											<span class="star">*</span> Required fields
+										</div>
+										<div class="text-center">
+											<button type="submit" class="btn btn-fill btn-wd" style="background-color: red;">Chercher</button>
+										</div>
+									</div>
+								</form>
+							</mat-tab>
+						</mat-tab-group>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -21,6 +21,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { departementComponent } from 'app/departement/departement.component';
 import { caisseComponent } from 'app/caisse/caisse.component';
 import { profileComponent } from 'app/profile/profile.component';
+import { WorkflowComponent } from 'app/workflow/workflow.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { profileComponent } from 'app/profile/profile.component';
     userComponent,
     departementComponent,
     caisseComponent,
-    profileComponent
+    profileComponent,
+    WorkflowComponent
   ]
 })
 

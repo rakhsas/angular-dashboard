@@ -6,6 +6,7 @@ import { userComponent } from 'app/test/user.component';
 import { departementComponent } from 'app/departement/departement.component';
 import { caisseComponent } from 'app/caisse/caisse.component';
 import { profileComponent } from 'app/profile/profile.component';
+import { WorkflowComponent } from 'app/workflow/workflow.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -57,5 +58,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'departements', component: departementComponent},
     { path: 'caisses', component: caisseComponent},
     { path: 'profiles', component: profileComponent},
+    { path: 'workflows', component: WorkflowComponent},
 
 ];

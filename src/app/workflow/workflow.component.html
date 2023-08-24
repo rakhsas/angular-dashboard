@@ -1,0 +1,94 @@
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body">
+						<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+							<mat-tab label="Workflows">
+								<table class="table">
+									<thead>
+										<tr>
+											<th class="text-center">#</th>
+											<th>Nom</th>
+											<th>Workflow</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let workflow of Workflows">
+											<td class="text-center">{{workflow.workFlowId}}</td>
+											<td>{{workflow.nom}}</td>
+											<td><span *ngIf="workflow.parent">{{workflow.parent.nom}}</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</mat-tab>
+							<mat-tab label="Chercher un Departement">
+									<form (submit)="onSubmit()">
+										<div class="card-content">
+											<div class="form-group col-md-6">
+												<label class="control-label">Worklow identiant
+													<span class="star">*</span>
+												</label>
+												<input class="form-control" name="id" type="number" [(ngModel)]="id" required="true"/>
+											</div>
+											<div class="category form-category">
+												<span class="star">*</span> Required fields</div>
+											<div class="text-center">
+												<button type="submit" class="btn btn-fill btn-wd" style="background-color: red;">Chercher</button>
+											</div>
+										</div>
+									</form>
+									<table class="table" *ngIf="Workflow">
+										<thead>
+											<tr>
+												<th class="text-center">#</th>
+												<th>Nom</th>
+												<th>Parent Departement</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="text-center">{{Workflow.workFlowId}}</td>
+											<td>{{Workflow.nom}}</td>
+											<td><span *ngIf="Workflow.parent">{{Workflow.parent.nom}}</span></td>
+											</tr>
+										</tbody>
+									</table>
+							</mat-tab>
+							<mat-tab label="Ajouter Departement">
+								<form [formGroup]="workflowForm" (ngSubmit)="onAdd(workflowForm.value)">
+									<div class="card-content">
+										<div class="row">
+											<div class="form-group col-md-4">
+												<label class="control-label">Nom
+													<span class="star">*</span>
+												</label>
+												<input class="form-control" name="nom" id="nom" type="text" formControlName="nom" required="true"/>
+											</div>
+											<div class="form-group col-md-4">
+												<br>
+												  <mat-form-field>
+													<mat-label>Workflows</mat-label>
+													<mat-select formControlName="workflow">
+													  <mat-option *ngFor="let wrkf of Workflows"  [value]="wrkf.workFlowId">{{wrkf.nom}}</mat-option>
+													</mat-select>
+												  </mat-form-field>
+											</div>
+										</div>
+										<div class="category form-category">
+											<span class="star">*</span> Required fields
+										</div>
+										<div class="text-center">
+											<button type="submit" class="btn btn-fill btn-wd" style="background-color: red;">Chercher</button>
+										</div>
+									</div>
+								</form>
+							</mat-tab>
+						</mat-tab-group>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

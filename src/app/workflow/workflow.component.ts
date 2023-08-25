@@ -23,7 +23,7 @@ export class WorkflowComponent {
 		) {
 		this.workflowForm = this.formBuilder.group({
 			nom: '',
-			workflow: '',
+			workflow: [],
 		  });
 	}
 
@@ -48,9 +48,10 @@ export class WorkflowComponent {
 
 	}
 	onAdd(formValue: any) {
+		// console.log(formValue)
 		let newData = this.transformFormData(formValue);
 		// newData.parent = null;
-		console.log(newData);
+		// console.log(newData);
 		this.workflowService.addWorkflow(newData).subscribe(
 			data => {
 				this.openSnackBar("Created Successfully", "cancel")
@@ -66,7 +67,8 @@ export class WorkflowComponent {
 	transformFormData(formData: any): any {
 		return {
 		  nom: formData.nom,
-		  parent: { workFlowId: [formData.workflow].map((workFlowId: number) => (workFlowId ))[0] }
+		//   parent: { workFlowId: [formData.workflow].map((workFlowId: number) => (workFlowId ))[0] },
+		  parent: formData.workflow.map((workFlowId: number) => ({ workFlowId }))
 		};
 	}
 }

@@ -70,7 +70,7 @@
 												<br>
 												  <mat-form-field>
 													<mat-label>Workflows</mat-label>
-													<mat-select multiple formControlName="workflow">
+													<mat-select formControlName="workflow">
 													  <mat-option *ngFor="let wrkf of Workflows"  [value]="wrkf.workFlowId">{{wrkf.nom}}</mat-option>
 													</mat-select>
 												  </mat-form-field>

@@ -12,6 +12,7 @@
 											<th class="text-center">#</th>
 											<th>Nom</th>
 											<th>Description</th>
+											<th>workflows</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -19,6 +20,7 @@
 											<td class="text-center">{{Profile.profilId}}</td>
 											<td>{{Profile.nomProfil}}</td>
 											<td>{{Profile.description}}</td>
+											<td *ngIf="Profile.assignedWorkflows.length > 0">{{Profile.assignedWorkflows[0].nom}}</td>
 										</tr>
 									</tbody>
 								</table>
@@ -60,17 +62,26 @@
 								<form [formGroup]="ProfileForm" (ngSubmit)="onAdd(ProfileForm.value)">
 									<div class="card-content">
 										<div class="row">
-											<div class="form-group col-md-6">
+											<div class="form-group col-md-4">
 												<label class="control-label">Nom
 													<span class="star">*</span>
 												</label>
 												<input class="form-control" name="nomProfil" id="nomProfil" type="text" formControlName="nomProfil" required="true"/>
 											</div>
-											<div class="form-group col-md-6">
+											<div class="form-group col-md-4">
 												<label class="control-label">description
 													<span class="star">*</span>
 												</label>
 												<input class="form-control" name="description" type="text" formControlName="description" id="description" required="true"/>
+											</div>
+											<div class="form-group col-md-4">
+												<br>
+												  <mat-form-field>
+													<mat-label>Workflows</mat-label>
+													<mat-select multiple formControlName="workflow">
+													  <mat-option *ngFor="let wrkf of Workflows"  [value]="wrkf.workFlowId">{{wrkf.nom}}</mat-option>
+													</mat-select>
+												  </mat-form-field>
 											</div>
 										</div>
 										<div class="category form-category">
